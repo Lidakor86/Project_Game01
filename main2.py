@@ -1,22 +1,45 @@
 import random as rnd
 
-
+nev = input("Kérem adja meg a karaktere nevét: ")
 
 def olvas(eleresi):
     with open(eleresi, 'r', encoding="utf8") as f:
         return f.read()
+val_cast = int(input("Válaszon egy karakter fajtát és írja be a számáz \n  1.Fekete macska : életerője 100, sebzése 15 \n 2.Narancs macska : életerője 120, sebzése 10 \n 3.Szürke macska : életerője 80, sebzése 20 \n"))
 
-def jatekosok_general(nevek, szam):
-    jatekosok = list()
+
+
+
+def karakter_general(stat, number):
+    karakter = list()
+    for i in range(number):
+        dd = {
+            "id" : i,
+            "nev": nev,
+        }
+        if val_cast == 1:
+            dd["elet"] = 100
+            dd["sebzes"] = 15
+        elif val_cast == 2:
+            dd["elet"] = 120
+            dd["sebzes"] = 10
+        elif val_cast == 3:
+            dd["elet"] = 80
+            dd["sebzes"] = 20
+
+
+def enemy_general(nevek, szam):
+    enemy = list()
     for i in range(szam):
         d = {
             "id" : i,
             "nev": nevek[rnd.randint(0, len(nevek)-1)],
             "elet" : 100,
             "sebzes": rnd.randint(10,20)
+      
         }
-        jatekosok.append(d)
-    return jatekosok
+        enemy.append(d)
+    return enemy
 
 
 def harc(jatekos1, jatekos2):
@@ -69,4 +92,4 @@ if __name__ == '__main__':
 print(f"A játékosok győzteste: {jatekosok[gyoztes_index]["nev"]}")
 
 
-#  Írják át  aprogrramot és kérdeze meg aze lején hogy hány játkossal futassa
+#  Írják át  aprogrramot és kérdeze meg aze lején hogy hány játkossal futassav
